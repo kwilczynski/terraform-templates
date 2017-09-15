@@ -7,7 +7,7 @@ output "vpc_id" {
 }
 
 output "prefix_list_id" {
-  value = "${aws_vpc_endpoint.mod.route_table_id}"
+  value = "${aws_vpc_endpoint.mod.prefix_list_id}"
 }
 
 output "cidr_blocks" {
