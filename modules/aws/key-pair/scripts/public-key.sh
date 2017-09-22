@@ -17,7 +17,10 @@ print_public_key() {
 export PATH=/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin
 
 PUBLIC_KEY=${PUBLIC_KEY-}
-eval "$(jq -r '@sh "PUBLIC_KEY=\(.public_key)"')"
+
+if ! test -t 0; then
+    eval "$(jq -r '@sh "PUBLIC_KEY=\(.public_key)"')"
+fi
 
 if [[ -f $PUBLIC_KEY ]]; then
     print_public_key "$(cat ${PUBLIC_KEY})"
