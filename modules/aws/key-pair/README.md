@@ -49,7 +49,7 @@ module "jenkins_key_pair" {
 | algorithm | The name of the algorithm to use for the key, can be either "RSA" or "ECDSA". Note that the elliptic curve algorithm "ECDSA" is currently not supported by AWS.| String | RSA | No ||
 | rsa_bits | The size of the generated RSA key in bits. | Integer | 4096 | No ||
 | ecdsa_curve | The name of the elliptic curve to use, can be either "P224", "P256", "P384", or "P521". | String | P384 | No |
-| public_key | A path to file containing public key in the OpenSSH public key format. | String || No |
+| public_key | Either path to file containing public key in the OpenSSH public key format, or a value containing the public key. | String || No |
 | key_name | The name of the key-pair. | String || No |
 | depends_on | A list of dependencies to hook into the underlying `aws_key_pair` resource in this module. This value should be a list that contains interpolations from the resources you want to add as dependencies. | List || No |
 
@@ -87,7 +87,7 @@ again in order to force Terraform to refresh dynamically computed values.
 
 In a case where the public and private keys were created automatically, then the private  
 key will be stored unencrypted in the resulting Terraform state file. This should be taken  
-into consideration as a possbile secuirty risk, therefore use of such key-pair for production  
+into consideration as a possible security risk, therefore use of such key-pair for production  
 deployments is generally _not_ recommended.
 
 
