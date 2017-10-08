@@ -8,9 +8,7 @@ data "null_data_source" "parser" {
 data "null_data_source" "integers" {
   inputs = {
     hosts   = "${pow(2, (32 - data.null_data_source.parser.outputs.to)) - 2}"
-    subnets = "${pow(2, (data.null_data_source.parser.outputs.netmask -
-                 data.null_data_source.parser.outputs.to) * signum(
-                 data.null_data_source.parser.outputs.netmask -
+    subnets = "${pow(2, abs(data.null_data_source.parser.outputs.netmask -
                  data.null_data_source.parser.outputs.to))}"
   }
 }
@@ -19,9 +17,8 @@ data "null_data_source" "networks" {
   count = "${var.count > 0 ? var.count : data.null_data_source.integers.outputs.subnets}"
 
   inputs = {
-    value = "${cidrsubnet(var.cidr_block, (data.null_data_source.parser.outputs.netmask -
-               data.null_data_source.parser.outputs.to) * signum(
-               data.null_data_source.parser.outputs.netmask -
+    value = "${cidrsubnet(var.cidr_block,
+               abs(data.null_data_source.parser.outputs.netmask -
                data.null_data_source.parser.outputs.to),
                count.index)}"
   }
