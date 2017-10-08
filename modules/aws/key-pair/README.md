@@ -3,25 +3,29 @@
 This is a Terraform module to create a key-pair in the current account which can be used when  
 starting a standalone EC2 instances or as part of the Auto-Scaling Group launch configuration.
 
-By default, this modules creates both the public and private keys automatically, and derives  
+By default, this module creates both the public and private keys automatically, and derives  
 name of the key-pair to be created from the `stack_name` variable. An existing public key in  
 the OpenSSH public key format can be provided using the `public_key` variable, whereas the  
 key-pair name can be overridden using the `key_name` variable.
 
 ## Requirements
 
-- Terraform 0.9.10 or higher
-- Bash 4.0 or higher
-- jq 1.5 or higher
+- Terraform 0.10.x or higher;
+- Bash 4.0 or higher;
+- jq 1.5 or higher.
 
 This module requires a Bash shell and jq for its helper script, and assumes that the jq binary  
 is available from within the current environment.
+
+## Dependencies
+
+None.
 
 ## Usage
 
 #### Example of a key-pair with public and private keys created automatically:
 
-```
+```ruby
 module "example_key_pair" {
   source = "./key-pair"
 
@@ -31,7 +35,7 @@ module "example_key_pair" {
 
 #### Example of a key-pair with an existing public key and a custom key-pair name:
 
-```
+```ruby
 module "jenkins_key_pair" {
   source = "./key-pair"
 
@@ -90,11 +94,11 @@ key will be stored unencrypted in the resulting Terraform state file. This shoul
 into consideration as a possible security risk, therefore use of such key-pair for production  
 deployments is generally _not_ recommended.
 
-
 ## References
 
 This module uses Terraform [aws_key_pair](https://www.terraform.io/docs/providers/aws/r/key_pair.html) and
-[tls_private_key](https://www.terraform.io/docs/providers/tls/r/private_key.html) resources, and the [External Data Source](https://www.terraform.io/docs/providers/external/data_source.html) internally.
+[tls_private_key](https://www.terraform.io/docs/providers/tls/r/private_key.html) resources, and the
+[External Data Source](https://www.terraform.io/docs/providers/external/data_source.html) internally.
 
 For the details about private and public keys formats, see the following documents:
 

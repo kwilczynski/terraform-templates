@@ -1,5 +1,5 @@
 data "aws_vpc_endpoint_service" "mod" {
-  service = "${var.service}"
+  service = "${lower(var.service)}"
 }
 
 data "aws_iam_policy_document" "mod" {
