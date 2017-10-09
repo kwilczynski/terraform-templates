@@ -19,7 +19,7 @@ variable "regions" {
     ca-central-1   = ["a", "b"]
     eu-west-1      = ["a", "b", "c"]
     eu-west-2      = ["a", "b"]
-    eu-central-1   = ["a", "b"]
+    eu-central-1   = ["a", "b", "c"]
     ap-northeast-1 = ["a", "b", "c"]
     ap-northeast-2 = ["a", "c"]
     ap-southeast-1 = ["a", "b"]
@@ -69,7 +69,8 @@ variable "regions_long" {
     ]
     eu-central-1 = [
       "eu-central-1a",
-      "eu-central-1b"
+      "eu-central-1b",
+      "eu-central-1c"
     ]
     ap-northeast-1 = [
       "ap-northeast-1a",
