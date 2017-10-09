@@ -33,7 +33,7 @@ data "null_data_source" "filter" {
              data.null_data_source.region.outputs.value]) : 0}"
 
   inputs = {
-    value = "${index(split(",", length(element(var.exclude, count.index)) > 1
+    value = "${index(split(",", length(element(concat(var.exclude, list("")), count.index)) > 1
                ? join(",", var.regions_long[data.null_data_source.region.outputs.value])
                : join(",", var.regions[data.null_data_source.region.outputs.value])),
                element(var.exclude, count.index))}"
