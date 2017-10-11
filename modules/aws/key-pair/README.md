@@ -33,6 +33,18 @@ module "example_key_pair" {
 }
 ```
 
+#### Example of a key-pair using public key given as an inline value and a custom key-pair name:
+
+```ruby
+module "deploy_key_pair" {
+  source = "./key-pair"
+
+  stack_name = "example-stack"
+  public_key = "ssh-rsa AAAAB3NzaC1 (...)"
+  key_name   = "deploy"
+}
+```
+
 #### Example of a key-pair with an existing public key and a custom key-pair name:
 
 ```ruby
