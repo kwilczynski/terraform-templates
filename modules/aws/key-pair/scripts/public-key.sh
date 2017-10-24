@@ -23,7 +23,7 @@ if ! test -t 0; then
 fi
 
 if [[ -f $PUBLIC_KEY ]]; then
-    print_public_key "$(cat ${PUBLIC_KEY})"
+    print_public_key "$(cat "${PUBLIC_KEY}")"
 else
-    print_public_key "$(echo ${PUBLIC_KEY})"
+    print_public_key "${PUBLIC_KEY}"
 fi
