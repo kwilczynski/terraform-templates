@@ -14,6 +14,6 @@ resource "digitalocean_droplet" "mod" {
   ipv6               = "${var.ipv6}"
   private_networking = "${var.private_networking}"
   region             = "${var.region}"
-  ssh_keys           = ["${var.ssh_keys}"]
+  ssh_keys           = "${var.ssh_keys}"
   tags               = "${var.tags}"
 }
