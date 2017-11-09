@@ -1,5 +1,4 @@
 variable "depends_on" {
-  type    = "list"
   default = []
 }
 
@@ -31,6 +30,5 @@ variable "private_networking" {
 }
 
 variable "tags" {
-  type    = "list"
   default = []
 }
