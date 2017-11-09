@@ -7,7 +7,7 @@ resource "null_resource" "depends_on" {
 resource "digitalocean_droplet" "m" {
   count = "${var.count}"
 
-  name               = "${var.count > 1 ? format("%s-0%d", var.name, count.index) : var.name }"
+  name               = "${var.count > 1 ? format("%s-0%d", var.name, count.index) : var.name}"
   image              = "${var.image}"
   size               = "${var.size}"
   backups            = "${var.backups}"
