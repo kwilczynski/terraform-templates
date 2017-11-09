@@ -1,15 +1,15 @@
-output "id" {
-  value = "${digitalocean_ssh_key.m.id}"
+output "ids" {
+  value = "${digitalocean_ssh_key.mod.*.id}"
 }
 
-output "name" {
-  value = "${digitalocean_ssh_key.m.name}"
+output "names" {
+  value = "${digitalocean_ssh_key.mod.*.name}"
 }
 
-output "public_key" {
-  value = "${digitalocean_ssh_key.m.public_key}"
+output "public_keys" {
+  value = "${digitalocean_ssh_key.mod.*.public_key}"
 }
 
-output "fingerprint" {
-  value = "${digitalocean_ssh_key.m.fingerprint}"
+output "fingerprints" {
+  value = "${digitalocean_ssh_key.mod.*.fingerprint}"
 }

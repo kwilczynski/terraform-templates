@@ -4,8 +4,9 @@ resource "null_resource" "depends_on" {
   }
 }
 
-resource "digitalocean_ssh_key" "m" {
+resource "digitalocean_ssh_key" "mod" {
   name       = "${var.name}"
-  public_key = "${file(var.public_key)}"
+  count      = "${length(var.public_keys)}"
+  public_key = "${file(element(var.public_keys, count.index))}"
   depends_on = ["null_resource.depends_on"]
 }
