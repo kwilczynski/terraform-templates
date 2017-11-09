@@ -4,7 +4,7 @@ resource "null_resource" "depends_on" {
   }
 }
 
-resource "digitalocean_droplet" "m" {
+resource "digitalocean_droplet" "mod" {
   count = "${var.count}"
 
   name               = "${var.count > 1 ? format("%s-0%d", var.name, count.index) : var.name}"
