@@ -11,7 +11,7 @@ variable "ssh_keys" {
 }
 
 variable "count" {
-  default = "1"
+  default = 1
 }
 
 variable "size" {
