@@ -19,15 +19,15 @@ variable "size" {
 }
 
 variable "backups" {
-  default = "false"
+  default = false
 }
 
 variable "ipv6" {
-  default = "false"
+  default = false
 }
 
 variable "private_networking" {
-  default = "false"
+  default = false
 }
 
 variable "tags" {
