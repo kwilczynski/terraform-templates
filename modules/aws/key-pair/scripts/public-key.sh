@@ -14,7 +14,7 @@ print_public_key() {
     fi
 }
 
-export PATH=/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin
+export PATH='/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin'
 
 PUBLIC_KEY=${PUBLIC_KEY-}
 
