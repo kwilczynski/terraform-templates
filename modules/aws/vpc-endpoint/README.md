@@ -21,7 +21,9 @@ None.
 
 ```ruby
 module "vpc_endpoint_s3" {
-  source = "../tf-aws-vpc-endpoint"
+  source = "../vpc-endpoint"
+
+  vpc_id = "${aws_vpc.vpc.id}"
 
   route_table_ids = [
     "${aws_route_table.public.id}",
@@ -34,7 +36,9 @@ module "vpc_endpoint_s3" {
 
 ```ruby
 module "vpc_endpoint_dynamodb" {
-  source = "../tf-aws-vpc-endpoint/dynamodb"
+  source = "../vpc-endpoint/dynamodb"
+
+  vpc_id = "${aws_vpc.vpc.id}"
 
   route_table_ids = ["${aws_route_table.private.id}"]
 }
