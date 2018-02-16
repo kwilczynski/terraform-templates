@@ -1,3 +1,6 @@
+
+data "aws_availability_zones" "available" {}
+
 data "null_data_source" "parser" {
   inputs = {
     to      = "${element(split("/", var.to), 1)}"
@@ -14,7 +17,7 @@ data "null_data_source" "integers" {
 }
 
 data "null_data_source" "networks" {
-  count = "${var.count > 0 ? var.count : data.null_data_source.integers.outputs.subnets}"
+  count  = "${var.count > 0 ? var.count : data.aws_availability_zones.available.names.index}"
 
   inputs = {
     value = "${cidrsubnet(var.cidr_block,
@@ -44,6 +47,7 @@ data "null_data_source" "even" {
   }
 }
 
+/*
 resource "random_shuffle" "random" {
   count = "${var.shuffle ? 1 : 0}"
 
@@ -51,3 +55,4 @@ resource "random_shuffle" "random" {
     "${data.null_data_source.networks.*.outputs.value}"
   ]
 }
+*/

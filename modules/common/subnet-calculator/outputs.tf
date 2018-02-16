@@ -1,3 +1,8 @@
+
+output "count" {
+  value = "${var.count}"
+}
+
 output "cidr_block" {
   value = "${var.cidr_block}"
 }
@@ -27,9 +32,10 @@ output "all" {
   value = ["${data.null_data_source.networks.*.outputs.value}"]
 }
 
-output "random" {
-  value = ["${random_shuffle.random.result}"]
-}
+output "regions" {
+    description = "Listing all available AWS Regions"
+    value       = "${data.aws_availability_zones.available.names}"
+  }
 
 output "odd" {
   value = ["${compact(data.null_data_source.odd.*.outputs.value)}"]
@@ -49,3 +55,9 @@ output "halve_2" {
               length(data.null_data_source.networks.*.outputs.value) / 2,
               length(data.null_data_source.networks.*.outputs.value))}"]
 }
+
+/*
+output "random" {
+  value = ["${random_shuffle.random.result}"]
+}
+*/
