@@ -24,12 +24,12 @@ fetch_origin() {
     local host="${hosts[$(( RANDOM % ${#hosts[@]} ))]}"
 
     # Try to get an IP address but give up after trying 5 times.
-    while [[ -z ${origin} ]] && (( tries < 5 )); do
+    while [[ -z $origin ]] && (( tries < 5 )); do
         set +e
         if which curl &>/dev/null; then
             origin=$(curl --max-time 5 --user-agent 'curl/1.0.0' -L "$host" 2>/dev/null)
         else
-            origin=$(wget --timeout 5 --user-agent 'curl/1.0.0' -O- "$host" 2>/dev/null)
+            origin=$(wget --timeout 5 --user-agent 'Wget/1.0.0' -O- "$host" 2>/dev/null)
         fi
         set -e
 
