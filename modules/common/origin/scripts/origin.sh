@@ -5,7 +5,13 @@ set -u
 set -o pipefail
 
 normalize_boolean() {
-    [[ $1 =~ 1|yes|true ]] && echo 'true' || echo 'false'
+    local boolean="$1"
+    shift
+
+    local status='true'
+    [[ "$boolean" =~ (1|yes|true) ]] || status='false'
+
+    echo "$status"
 }
 
 fetch_origin() {
@@ -20,7 +26,7 @@ fetch_origin() {
     )
 
     local tries=0
-    local origin=''
+    local origin=
     local host="${hosts[$(( RANDOM % ${#hosts[@]} ))]}"
 
     # Try to get an IP address but give up after trying 5 times.
