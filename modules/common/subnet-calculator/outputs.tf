@@ -28,7 +28,7 @@ output "all" {
 }
 
 output "random" {
-  value = ["${random_shuffle.random.result}"]
+  value = ["${random_shuffle.random.*.result}"]
 }
 
 output "odd" {
